@@ -1,0 +1,12 @@
+USE db1;
+
+DROP TABLE IF EXISTS status_db;
+
+CREATE TABLE status_db (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  description VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO status_db (description) VALUES ('mysql db up and running');

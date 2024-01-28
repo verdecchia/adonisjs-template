@@ -1,0 +1,10 @@
+node_modules
+.git
+.gitignore
+.env*
+scripts
+.DS_Store
+.yarn
+.vscode
+.pnp*
+.prettier*

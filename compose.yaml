@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adonis-node
+    restart: unless-stopped
+    working_dir: /usr/project
+    ports:
+      - '3333:3333'
+    env_file:
+      - ./.env
+    volumes:
+      - ./app:/usr/project/app
+      - ./tests:/usr/project/tests
+      - ./commands:/usr/project/commands
+      - ./config:/usr/project/config
+      - ./start:/usr/project/start
+    networks:
+      - mgs-net
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - '${MYSQL_PORT}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+    volumes:
+      - ./scripts/mysql-init.sql:/docker-entrypoint-initdb.d/01-mysql-init.sql
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mgs-net
+  redis:
+    image: redis:latest
+    container_name: redis
+    networks:
+      - mgs-net
+    ports:
+      - '${REDIS_PORT}:6379'
+    command: 'redis-server --requirepass ${REDIS_PASSWORD}'
+    volumes:
+      - redis_data:/data
+volumes:
+  redis_data: {}
+  mysql_data: {}
+networks:
+  mgs-net:
+    driver: bridge
