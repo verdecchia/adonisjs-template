@@ -12,19 +12,18 @@ Route.group(() => {
       return { message: 'rest api are healthy' }
     })
     Route.get('/status', async () => {
-      const api = 'rest api are healthy'
-      let storage = 'is down'
       try {
-        storage =  (await Database.from('status_db').select('*').first()).description
-      } catch (ex) {
-        //todo log
-      } finally {
+        const api = 'rest api are healthy'
+        let storage = 'is down'
+        storage = (await Database.from('status_db').select('*').first()).description
+
         return {
           api,
-          storage
+          storage,
         }
+      } catch (ex) {
+        return { error: ex }
       }
-
     })
   }).prefix('/v2')
 }).prefix('/api')

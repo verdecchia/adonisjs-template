@@ -52,3 +52,15 @@ Optionally run locally:
 ```
 $ yarn test
 ```
+
+### Format project code
+
+```
+$ yarn format
+```
+
+### Lint code
+
+```
+$ yarn lint
+```

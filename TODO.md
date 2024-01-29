@@ -1,6 +1,6 @@
 # Todo list
 
 - [ ] add log
-- [X] add route tests
+- [x] add route tests
 - [ ] add controllers
 - [ ] add repository

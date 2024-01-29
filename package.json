@@ -48,6 +48,7 @@
     "@types/luxon": "^3",
     "@types/proxy-addr": "^2.0.3",
     "@types/source-map-support": "^0.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
     "adonis-preset-ts": "^2.1.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
