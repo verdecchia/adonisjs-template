@@ -4,7 +4,8 @@ node_modules
 .env*
 scripts
 .DS_Store
-.yarn
+.yarn*
+!.yarn/releases
 .vscode
 .pnp*
 .prettier*
