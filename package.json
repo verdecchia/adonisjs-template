@@ -10,7 +10,7 @@
     "build": "node ace build --production",
     "start": "node server.js",
     "test": "node ace test",
-    "test:docker" : "docker exec -it adonis-node sh -c 'yarn test'",
+    "test:docker": "docker exec -it adonis-node sh -c 'yarn test'",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."
   },
